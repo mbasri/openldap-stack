@@ -1,0 +1,20 @@
+#!/bin/sh
+
+VER=${1:-latest}
+
+REPO="sensorgraph/openldap:${VER}"
+
+docker login --username=mbasri
+if [ "$?"  -eq 0 ]; then
+  docker build -t $REPO .
+  docker push $REPO
+  if [ "$?"  -eq 0 ]; then
+    VER="latest"
+    REPO_LATEST="sensorgraph/openldap:${VER}"
+    docker tag $REPO $REPO_LATEST
+    docker push $REPO_LATEST
+  fi
+else
+  echo -n "Login failed, exiting"
+  exit 1
+fi
