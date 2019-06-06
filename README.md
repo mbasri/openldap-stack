@@ -26,7 +26,7 @@ cd ~/openldap
 
 * Persistent data :
   * /etc/ldap/sldap.d
-  * /var/lin/ldap
+  * /var/lib/ldap
 * Transport Layer Security
   * /container/service/slapd/assets/certs
 
