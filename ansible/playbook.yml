@@ -1,0 +1,16 @@
+- name: Run OpenLDAP
+  connection:  local
+  hosts: localhost
+  vars:
+    net:
+      kibadex:
+        ldap:
+          uri: ldaps://ldap.kibadex.net:6360
+          base_dn: dc=kibadex,dc=net
+          bind_dn: cn=admin,dc=kibadex,dc=net
+          bind_pw: admin
+  pre_tasks:
+    - include_tasks: tasks/init.yml
+  tasks:
+    - include_tasks: tasks/groups.yml
+    - include_tasks: tasks/users.yml
