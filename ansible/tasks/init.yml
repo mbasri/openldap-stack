@@ -8,7 +8,7 @@
     server_uri: "{{ net.kibadex.ldap.uri }}"
     bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
     bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
-  whith_items: 
+  with_items: 
     - ou=groups,{{ net.kibadex.ldap.base_dn }}
     - ou=users,{{ net.kibadex.ldap.base_dn }}
     - ou=bots,ou=users,{{ net.kibadex.ldap.base_dn }}
