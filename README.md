@@ -5,7 +5,7 @@
 
 **A docker image to run OpenLDAP.**
 
-> * Docker base image: [github.com/osixia/docker-openldap](github.com/osixia/docker-openldap)
+> * Docker base image: [https://github.com/osixia/docker-openldap](https://github.com/osixia/docker-openldap)
 > * OpenLDAP website: [www.openldap.org](http://www.openldap.org/)
 
 ## Prerequisites
