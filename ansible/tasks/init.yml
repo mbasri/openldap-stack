@@ -1,14 +1,15 @@
 - name: Create base entry for groups and users
   ldap_entry:
-    dn: "{{ item }}"
+    dn: "{{ item }},{{ net.kibadex.ldap.base_dn }}"
     objectClass: organizationalUnit
-    start_tls : true
-    validate_certs: no
     state: present
-    server_uri: "{{ net.kibadex.ldap.uri }}"
+    server_uri: "{{ net.kibadex.ldap.server.uri }}"
+    start_tls : "{{ net.kibadex.ldap.server.start_tls }}"
+    validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
     bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
     bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
   with_items: 
-    - ou=groups,{{ net.kibadex.ldap.base_dn }}
-    - ou=users,{{ net.kibadex.ldap.base_dn }}
-    - ou=bots,ou=users,{{ net.kibadex.ldap.base_dn }}
+    - ou=groups
+    - ou=softwares,ou=groups
+    - ou=users
+    - ou=bots,ou=users

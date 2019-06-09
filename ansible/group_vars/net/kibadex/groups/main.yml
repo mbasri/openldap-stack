@@ -1,0 +1,21 @@
+ldap_groups:
+  - dn: cn=managements
+    gid: 500
+    state: present
+  - dn: cn=labs
+    gid: 501
+    state: present
+
+  # Software groups
+  - dn: cn=grafana,ou=softwares
+    gid: 900
+    state: present
+  - dn: cn=rabbitmq,ou=softwares
+    gid: 901
+    state: present
+  - dn: cn=uchiwa,ou=softwares
+    gid: 902
+    state: present
+  - dn: cn=chronograph,ou=softwares
+    gid: 903
+    state: present

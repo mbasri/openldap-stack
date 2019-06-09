@@ -1,0 +1,18 @@
+ldap_users:
+  - firstnames: 'Mohamed'
+    lastnames: 'BASRI'
+    mail: 'mohamed.basri@outlook.com'
+    login: 'mbasri'
+    password: '{SSHA}CplqfPlaTynLY4OC65wC9wToTEZuPdw+'
+    uid: 1000
+    gid: 500
+    shell: "{{ net.kibadex.ldap.unix.shell.path }}"
+    home_directory: "{{ net.kibadex.ldap.unix.homes.path+'/mbasri' }}"
+    description: CTO
+    ssh_public_key: "{{ lookup('file', net.kibadex.ldap.unix.public_keys.path + '/mbasri.pub') }}"
+    groups: 
+      - cn=managements
+      - cn=grafana,ou=softwares
+    state: present
+
+  # Bot users

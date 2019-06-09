@@ -1,0 +1,15 @@
+- name: Create base entry for groups
+  ldap_entry:
+    dn: "{{ item.dn }},ou=groups,{{ net.kibadex.ldap.base_dn }}"
+    objectClass: 
+      - posixGroup
+    attributes:
+      gidNumber: "{{ item.gid }}"
+      memberUid: None
+    state: "{{ item.state }}"
+    server_uri: "{{ net.kibadex.ldap.server.uri }}"
+    start_tls : "{{ net.kibadex.ldap.server.start_tls }}"
+    validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
+    bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
+    bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
+  with_items: "{{ ldap_groups }}"

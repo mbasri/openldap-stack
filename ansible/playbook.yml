@@ -1,15 +1,10 @@
-- name: Run OpenLDAP
+- name: Run OpenLDAP for create the entries
   connection:  local
   hosts: localhost
-  vars:
-    net:
-      kibadex:
-        ldap:
-          uri: ldaps://ldap.kibadex.net:6360
-          base_dn: dc=kibadex,dc=net
-          bind_dn: cn=admin,dc=kibadex,dc=net
-          bind_pw: admin
   pre_tasks:
+    - include_vars: group_vars/net/kibadex/main.yml
+    - include_vars: group_vars/net/kibadex/groups/main.yml
+    - include_vars: group_vars/net/kibadex/users/main.yml
     - include_tasks: tasks/init.yml
   tasks:
     - include_tasks: tasks/groups.yml
