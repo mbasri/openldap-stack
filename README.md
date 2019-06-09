@@ -35,6 +35,57 @@ cd ~/openldap
 * LDAP : 389
 * LDAPS : 636
 
+### Create the entries on the LDAP
+
+The [ansible](./ansible) folder content a playbook for initialize the entries on the LDAP, It will create the groups and users.
+the informations related to the server is present of the following file [group_vars/net/kibadex/main.yml](./ansible//group_vars/net/kibadex/main.yml), about the variable `net.kibadex.ldap.bind_pw` you can set the server password directly as follows:
+
+```yml
+net:
+  kibadex:
+    ldap:
+      bind_pw: MyPassword
+```
+
+Or generate a `vault password` and set the password encrypted as follows:
+
+```bash
+> ansible-vault encrypt_string MyPassword
+New Vault password:
+Confirm New Vault password:
+!vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          39386165353866333831613233353235656139613164663465313133623461653663663332346135
+          6637306261313462633465386237313632656266646464630a356636363161326262623335646639
+          39323866326335626333306137333236646564383737643461623564326338663962653164386361
+          6662633064333062350a393030663364356266336361353730313463663437326337393337623031
+          6335
+Encryption successful
+```
+
+```yml
+net:
+  kibadex:
+    ldap:
+      bind_pw: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          39386165353866333831613233353235656139613164663465313133623461653663663332346135
+          6637306261313462633465386237313632656266646464630a356636363161326262623335646639
+          39323866326335626333306137333236646564383737643461623564326338663962653164386361
+          6662633064333062350a393030663364356266336361353730313463663437326337393337623031
+          6335
+```
+
+For run the playbook, start the following command:
+
+```bash
+# Without an encrypted datas on your ansible playbook
+ansible-playbook playbook.yml
+
+# With an encrypted datas on your ansible playbook
+ansible-playbook playbook.yml --ask-vault
+```
+
 ## Author
 
 * [**Mohamed BASRI**](https://github.com/mbasri)
