@@ -7,15 +7,28 @@ ldap_groups:
     state: present
 
   # Software groups
-  - dn: cn=grafana,ou=softwares
+  ## Grafana
+  - dn: cn=superadmins,ou=grafana,ou=softwares
     gid: 900
     state: present
-  - dn: cn=rabbitmq,ou=softwares
+  - dn: cn=admins,ou=grafana,ou=softwares
     gid: 901
     state: present
-  - dn: cn=uchiwa,ou=softwares
+  - dn: cn=editors,ou=grafana,ou=softwares
     gid: 902
     state: present
-  - dn: cn=chronograph,ou=softwares
+  - dn: cn=viewers,ou=grafana,ou=softwares
     gid: 903
+    state: present
+  ## Rabbitmq
+  - dn: cn=rabbitmq,ou=softwares
+    gid: 910
+    state: present
+  ## Uchiwa
+  - dn: cn=uchiwa,ou=softwares
+    gid: 920
+    state: present
+  ## Chronograph
+  - dn: cn=chronograph,ou=softwares
+    gid: 930
     state: present

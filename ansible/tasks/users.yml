@@ -1,6 +1,6 @@
 - name: Create an entry on the LDAP for a user
   ldap_entry:
-    dn: "cn={{ item.firstnames }} {{ item.lastnames|upper }},ou=users,{{ net.kibadex.ldap.base_dn }}"
+    dn: "cn={{ item.login }},ou=users,{{ net.kibadex.ldap.base_dn }}"
     objectClass:
       - inetOrgPerson
       - posixAccount
@@ -11,6 +11,7 @@
       gidNumber: "{{ item.gid }}"
       userPassword: "{{ item.password }}"
       mail: "{{ item.mail }}"
+      displayName: "{{item.firstnames }} {{ item.lastnames|upper}}"
       givenName: "{{ item.firstnames }}"
       sn: "{{ item.lastnames|upper }}"
       homeDirectory: "{{ item.home_directory }}"

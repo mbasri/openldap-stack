@@ -11,5 +11,6 @@
   with_items: 
     - ou=groups
     - ou=softwares,ou=groups
+    - ou=grafana,ou=softwares,ou=groups
     - ou=users
     - ou=bots,ou=users
