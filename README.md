@@ -33,8 +33,8 @@ cd ~/openldap
 
 ### Port
 
-* LDAP : 389
-* LDAPS : 636
+* LDAP: 389
+* LDAPS: 636
 
 ### Create the entries on the LDAP
 
