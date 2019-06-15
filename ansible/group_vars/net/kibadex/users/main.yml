@@ -16,4 +16,4 @@ ldap_users:
       - dn: cn=managements
         state: present
       - dn: cn=superadmins,ou=grafana,ou=softwares
-        state: absent
+        state: present
