@@ -1,0 +1,13 @@
+- name: Attach users to groups
+  ldap_attr:
+    dn: "{{ item.1.dn }},ou=groups,{{ net.kibadex.ldap.base_dn }}"
+    name: memberUid
+    values: "{{ item.0.uid }}"
+    state: "{{ item.1.state }}"
+    server_uri: "{{ net.kibadex.ldap.server.uri }}"
+    start_tls : "{{ net.kibadex.ldap.server.start_tls }}"
+    validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
+    bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
+    bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
+  loop: "{{ ldap_users|subelements('groups') }}"
+  when: item[0].state == 'present'

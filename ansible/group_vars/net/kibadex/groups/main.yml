@@ -1,34 +1,34 @@
 ldap_groups:
   - dn: cn=managements
-    gid: 500
+    gidNumber: 500
     state: present
   - dn: cn=labs
-    gid: 501
+    gidNumber: 501
     state: present
 
   # Software groups
   ## Grafana
   - dn: cn=superadmins,ou=grafana,ou=softwares
-    gid: 900
+    gidNumber: 900
     state: present
   - dn: cn=admins,ou=grafana,ou=softwares
-    gid: 901
+    gidNumber: 901
     state: present
   - dn: cn=editors,ou=grafana,ou=softwares
-    gid: 902
+    gidNumber: 902
     state: present
   - dn: cn=viewers,ou=grafana,ou=softwares
-    gid: 903
+    gidNumber: 903
     state: present
   ## Rabbitmq
   - dn: cn=rabbitmq,ou=softwares
-    gid: 910
+    gidNumber: 910
     state: present
   ## Uchiwa
   - dn: cn=uchiwa,ou=softwares
-    gid: 920
+    gidNumber: 920
     state: present
   ## Chronograph
   - dn: cn=chronograph,ou=softwares
-    gid: 930
+    gidNumber: 930
     state: present

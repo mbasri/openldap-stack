@@ -9,3 +9,4 @@
   tasks:
     - include_tasks: tasks/groups.yml
     - include_tasks: tasks/users.yml
+    - include_tasks: tasks/attachments.yml

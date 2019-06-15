@@ -11,7 +11,9 @@ ldap_users:
     loginShell: "{{ net.kibadex.ldap.unix.shell.path }}"
     homeDirectory: "{{ net.kibadex.ldap.unix.homes.path+'/mbasri' }}"
     sshPublicKey: "{{ lookup('file', net.kibadex.ldap.unix.public_keys.path + '/mbasri.pub') }}"
-    groups: 
-      - cn=managements
-      - cn=grafana,ou=softwares
     state: present
+    groups: 
+      - dn: cn=managements
+        state: present
+      - dn: cn=superadmins,ou=grafana,ou=softwares
+        state: absent

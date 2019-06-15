@@ -1,4 +1,4 @@
-- name: Create an entry on the LDAP for a user
+- name: Create the entries on the LDAP for users
   ldap_entry:
     dn: "cn={{ item.uid }},ou=users,{{ net.kibadex.ldap.base_dn }}"
     objectClass:
@@ -24,14 +24,14 @@
     validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
     bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
     bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
-  with_items: "{{ ldap_users }}"
+  loop: "{{ ldap_users }}"
 
-- name: Update an entry on the LDAP for a user
+- name: Update the entries on the LDAP for existing users
   ldap_attr:
     dn: "cn={{ item[0].uid }},ou=users,{{ net.kibadex.ldap.base_dn }}"
     name: "{{ item[1] }}"
     values: "{{ item.0[item.1] }}"   
-    state: "exact"
+    state: exact
     server_uri: "{{ net.kibadex.ldap.server.uri }}"
     start_tls : "{{ net.kibadex.ldap.server.start_tls }}"
     validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
@@ -51,3 +51,4 @@
             'homeDirectory',
             'sshPublicKey'])
           |list }}"
+  when: item[0].state == 'present'

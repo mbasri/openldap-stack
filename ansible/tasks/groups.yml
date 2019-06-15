@@ -1,11 +1,10 @@
-- name: Create base entry for groups
+- name: Create the entries on the LDAP for groups
   ldap_entry:
     dn: "{{ item.dn }},ou=groups,{{ net.kibadex.ldap.base_dn }}"
     objectClass: 
       - posixGroup
     attributes:
-      gidNumber: "{{ item.gid }}"
-      memberUid: None
+      gidNumber: "{{ item.gidNumber }}"
     state: "{{ item.state }}"
     server_uri: "{{ net.kibadex.ldap.server.uri }}"
     start_tls : "{{ net.kibadex.ldap.server.start_tls }}"
