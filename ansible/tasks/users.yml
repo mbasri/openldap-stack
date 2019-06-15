@@ -1,25 +1,53 @@
 - name: Create an entry on the LDAP for a user
   ldap_entry:
-    dn: "cn={{ item.login }},ou=users,{{ net.kibadex.ldap.base_dn }}"
+    dn: "cn={{ item.uid }},ou=users,{{ net.kibadex.ldap.base_dn }}"
     objectClass:
       - inetOrgPerson
       - posixAccount
       - ldapPublicKey
     attributes:
-      uid: "{{ item.login }}"
-      uidNumber: "{{ item.uid }}"
-      gidNumber: "{{ item.gid }}"
-      userPassword: "{{ item.password }}"
+      uid: "{{ item.uid }}"
+      givenName: "{{ item.givenName }}"
+      sn: "{{ item.sn }}"
       mail: "{{ item.mail }}"
-      displayName: "{{item.firstnames }} {{ item.lastnames|upper}}"
-      givenName: "{{ item.firstnames }}"
-      sn: "{{ item.lastnames|upper }}"
-      homeDirectory: "{{ item.home_directory }}"
-      sshPublicKey: "{{ item.ssh_public_key }}"
+      displayName: "{{ item.displayName }}"
+      description: "{{ item.description }}"
+      userPassword: "{{ item.userPassword }}"
+      uidNumber: "{{ item.uidNumber }}"
+      gidNumber: "{{ item.gidNumber }}"
+      loginShell: "{{ item.loginShell }}"
+      homeDirectory: "{{ item.homeDirectory }}"
+      sshPublicKey: "{{ item.sshPublicKey }}"
     state: "{{ item.state }}"
+    server_uri: "{{ net.kibadex.ldap.server.uri }}"
+    start_tls: "{{ net.kibadex.ldap.server.start_tls }}"
+    validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
+    bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
+    bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
+  with_items: "{{ ldap_users }}"
+
+- name: Update an entry on the LDAP for a user
+  ldap_attr:
+    dn: "cn={{ item[0].uid }},ou=users,{{ net.kibadex.ldap.base_dn }}"
+    name: "{{ item[1] }}"
+    values: "{{ item.0[item.1] }}"   
+    state: "exact"
     server_uri: "{{ net.kibadex.ldap.server.uri }}"
     start_tls : "{{ net.kibadex.ldap.server.start_tls }}"
     validate_certs: "{{ net.kibadex.ldap.server.validate_certs }}"
     bind_dn:  "{{ net.kibadex.ldap.bind_dn }}"
     bind_pw: "{{ net.kibadex.ldap.bind_pw }}"
-  with_items: "{{ ldap_users }}"
+  loop: "{{ ldap_users
+          |product(['uid',
+            'givenName',
+            'sn',
+            'mail',
+            'displayName',
+            'description',
+            'userPassword',
+            'uidNumber',
+            'gidNumber',
+            'loginShell',
+            'homeDirectory',
+            'sshPublicKey'])
+          |list }}"
