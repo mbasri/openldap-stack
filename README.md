@@ -31,7 +31,7 @@ cd ~/openldap
 * Transport Layer Security
   * /container/service/slapd/assets/certs
 
-### Port
+### Ports
 
 * LDAP: 389
 * LDAPS: 636
