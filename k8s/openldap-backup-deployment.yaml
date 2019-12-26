@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: openldap-backup
@@ -14,7 +14,7 @@ spec:
       name: openldap-backup
       labels:
         app: openldap-backup
-   spec:
-     containers:
-     - name: openldap-backup
-       image: openldap-backup
+    spec:
+      containers:
+      - name: openldap-backup
+        image: osixia/openldap-backup

@@ -9,7 +9,9 @@ spec:
     app: openldap
   type: ClusterIP
   ports:
-  - port: 389
+  - name: notsecure
+    port: 389
     targetPort: 389
-  - port: 636
+  - name: secure
+    port: 636
     targetPort: 636

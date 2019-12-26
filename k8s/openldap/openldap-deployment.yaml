@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openldap
+  labels:
+    app: openldap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openldap
+  template:
+    metadata:
+      name: openldap
+      labels:
+        app: openldap
+    spec:
+      containers:
+      - name: openldap
+        image: sensorgraph/openldap
+        ports:
+        - containerPort: 389
+        - containerPort: 636
+        env:
+        - name: LDAP_ORGANISATION
+          valueFrom:
+            configMapKeyRef:
+              name: openldap
+              key: ldap_organisation
+
+        - name: LDAP_DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              name: openldap
+              key: ldap_domain
+
+        - name: LDAP_READONLY_USER
+          valueFrom:
+            configMapKeyRef:
+              name: openldap
+              key: ldap_readonly_user
+
+       # - name: LDAP_TLS_CA_CRT_FILENAME
+       #   valueFrom:
+       #     configMapKeyRef:
+       #       name: openldap
+       #       key: ldap_tls_ca_crt_filename
+
+        #- name: LDAP_TLS_CRT_FILENAME
+        #  valueFrom:
+        #    configMapKeyRef:
+        #      name: openldap
+        #      key: ldap_tls_crt_filename
+
+        #- name: LDAP_TLS_KEY_FILENAME
+        #  valueFrom:
+        #    configMapKeyRef:
+        #      name: openldap
+        #      key: ldap_tls_key_filename
+
+        - name: LDAP_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: openldap
+              key: ldap_admin_password
+
+        - name: LDAP_READONLY_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: openldap
+              key: ldap_readonly_password
