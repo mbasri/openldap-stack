@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpldapadmin
+  labels:
+    app: phpldapadmin
+spec:
+  selector:
+    app: phpldapadmin
+  type: NodeIP
+  ports:
+  - port: 80
+    targetPort: 80
+  - port: 443
+    targetPort: 443
