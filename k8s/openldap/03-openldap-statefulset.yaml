@@ -1,10 +1,11 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: openldap
   labels:
     app: openldap
 spec:
+  serviceName: openldap
   replicas: 1
   selector:
     matchLabels:
@@ -21,6 +22,13 @@ spec:
         ports:
         - containerPort: 389
         - containerPort: 636
+        volumeMounts:
+        - name: openldap
+          mountPath: /var/lib/ldap
+          subPath: var/lib/ldap
+        - name: openldap
+          mountPath: /etc/ldap/slapd.d
+          subPath: etc/ldap/slapd.d
         env:
         - name: LDAP_ORGANISATION
           valueFrom:
@@ -40,24 +48,6 @@ spec:
               name: openldap
               key: ldap_readonly_user
 
-       # - name: LDAP_TLS_CA_CRT_FILENAME
-       #   valueFrom:
-       #     configMapKeyRef:
-       #       name: openldap
-       #       key: ldap_tls_ca_crt_filename
-
-        #- name: LDAP_TLS_CRT_FILENAME
-        #  valueFrom:
-        #    configMapKeyRef:
-        #      name: openldap
-        #      key: ldap_tls_crt_filename
-
-        #- name: LDAP_TLS_KEY_FILENAME
-        #  valueFrom:
-        #    configMapKeyRef:
-        #      name: openldap
-        #      key: ldap_tls_key_filename
-
         - name: LDAP_ADMIN_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -69,3 +59,13 @@ spec:
             secretKeyRef:
               name: openldap
               key: ldap_readonly_password
+  volumeClaimTemplates:
+  - metadata:
+      name: openldap
+    spec:
+      storageClassName: aws-ebs-gp2
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi

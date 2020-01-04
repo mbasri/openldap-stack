@@ -1,0 +1,13 @@
+#Terraform
+terraform.tfstate*
+.terraform*
+*-plan
+modules
+
+#Secret
+*.pem
+*.secret
+
+#k8s
+config-*
+kubeconfig*

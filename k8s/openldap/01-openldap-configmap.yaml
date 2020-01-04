@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: openldap
+  labels:
+    app: openldap
+data:
+  ldap_organisation: Kibadex
+  ldap_domain: kibadex.net
+  ldap_readonly_user: "true"
+  ldap_tls_ca_crt_filename: kibadex.net.crt
+  ldap_tls_crt_filename: ldap.kibadex.net.crt
+  ldap_tls_key_filename: ldap.kibadex.net.key
