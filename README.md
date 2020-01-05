@@ -3,12 +3,12 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/mbasri/openldap-stack.svg)
 ![Image size](https://images.microbadger.com/badges/image/mbasri/openldap-stack.svg)
 
-**A docker image to run OpenLDAP.**
+**A docker images to run OpenLDAP Stack.**
 
-> * Docker base image:
->   * [https://github.com/osixia/docker-openldap](https://github.com/osixia/docker-openldap)
->   * [https://github.com/osixia/docker-phpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
->   * [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
+> * Docker base images:
+>   * OpenLDAP: [https://github.com/osixia/docker-openldap](https://github.com/osixia/docker-openldap)
+>   * PHPLDAPAdmin: [https://github.com/osixia/docker-phpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
+>   * OpenLDAP Backup: [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
 > * OpenLDAP website: [www.openldap.org](http://www.openldap.org/)
 
 ## Prerequisites
@@ -19,7 +19,7 @@
 ## Usage
 
 ```bash
-git clone https://github.com/mbasri/openldap-stack.git ~/openldap
+git clone https://github.com/mbasri/openldap-stack.git ~/openldap-stack
 cd ~/openldap-stack
 ./build
 ```
@@ -28,7 +28,7 @@ cd ~/openldap-stack
 
 ### Volumes
 
-#### OpenLDAP
+OpenLDAP:
 
 * Persistent data :
   * /etc/ldap/sldap.d
@@ -36,30 +36,30 @@ cd ~/openldap-stack
 * Transport Layer Security
   * /container/service/slapd/assets/certs
 
-#### PHPLDAPAdmin
+PHPLDAPAdmin:
 
 * Transport Layer Security
   * /container/service/phpldapadmin/assets/apache2/certs
 
-#### OpenLDAP Backup
+OpenLDAP Backup:
 
-* TODO
+* None
 
 ### Ports
 
-#### OpenLDAP
+OpenLDAP:
 
 * LDAP: 389
 * LDAPS: 636
 
-#### PHPLDAPAdmin
+PHPLDAPAdmin:
 
 * HTTP: 80
 * HTTPS: 443
 
-#### OpenLDAP Backup
+OpenLDAP Backup:
 
-* TODO
+* None
 
 ### Create the entries on the LDAP
 
