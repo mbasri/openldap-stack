@@ -6,9 +6,8 @@
 **A docker images to run OpenLDAP Stack.**
 
 > * Docker base images:
->   * OpenLDAP: [https://github.com/osixia/docker-openldap](https://github.com/osixia/docker-openldap)
+>   * OpenLDAP: [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
 >   * PHPLDAPAdmin: [https://github.com/osixia/docker-phpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
->   * OpenLDAP Backup: [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
 > * OpenLDAP website: [www.openldap.org](http://www.openldap.org/)
 
 ## Prerequisites
@@ -33,6 +32,7 @@ OpenLDAP:
 * Persistent data :
   * /etc/ldap/sldap.d
   * /var/lib/ldap
+  * /data/backup
 * Transport Layer Security
   * /container/service/slapd/assets/certs
 
@@ -40,10 +40,6 @@ PHPLDAPAdmin:
 
 * Transport Layer Security
   * /container/service/phpldapadmin/assets/apache2/certs
-
-OpenLDAP Backup:
-
-* None
 
 ### Ports
 
@@ -56,10 +52,6 @@ PHPLDAPAdmin:
 
 * HTTP: 80
 * HTTPS: 443
-
-OpenLDAP Backup:
-
-* None
 
 ### Create the entries on the LDAP
 
