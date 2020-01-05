@@ -3,7 +3,7 @@ resource "random_string" "admin" {
   special = false
   
   lifecycle {
-    prevent_destroy = true
+    #prevent_destroy = true
     ignore_changes = [length, special]
   }
 }
@@ -13,7 +13,7 @@ resource "random_string" "readonly" {
   special = false
   
   lifecycle {
-    prevent_destroy = true
+    #prevent_destroy = true
     ignore_changes = [length, special]
   }
 }
