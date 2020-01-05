@@ -3,12 +3,11 @@
 VERSION=${1:-latest}
 
 docker login --username=mbasri
-REPOSITORY="mbasri/openldap:${VERRSION}"
 
 cd docker
 for i in "openldap" "phpldapadmin" "openldap-backup"
 do
-  REPOSITORY="mbasri/${i}:${VERRSION}"
+  REPOSITORY="mbasri/${i}:${VERSION}"
   if [ "$?" -eq 0 ]; then
     docker build -t ${REPOSITORY} ${i}
     docker push ${REPOSITORY}
