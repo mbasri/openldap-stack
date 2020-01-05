@@ -1,1 +1,0 @@
-FROM osixia/openldap-backup:1.3.0

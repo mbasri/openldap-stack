@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: openldap
-        image: sensorgraph/openldap
+        image: mbasri/openldap
         ports:
         - containerPort: 389
         - containerPort: 636
@@ -59,6 +59,24 @@ spec:
             secretKeyRef:
               name: openldap
               key: ldap_readonly_password
+
+        - name: LDAP_BACKUP_CONFIG_CRON_EXP
+          valueFrom:
+            secretKeyRef:
+              name: openldap
+              key: ldap_backup_config_cron_exp
+
+        - name: LDAP_BACKUP_DATA_CRON_EXP
+          valueFrom:
+            secretKeyRef:
+              name: openldap
+              key: ldap_backup_data_cron_exp
+              
+        - name: LDAP_BACKUP_TTL
+          valueFrom:
+            secretKeyRef:
+              name: openldap
+              key: ldap_backup_ttl
   volumeClaimTemplates:
   - metadata:
       name: openldap

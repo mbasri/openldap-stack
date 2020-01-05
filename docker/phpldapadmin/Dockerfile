@@ -1,3 +1,5 @@
+# Use mbasri/phpldapadmin
+# sources: https://github.com/mbasri/phpldapadmin
 FROM osixia/phpldapadmin:0.9.0
 
 ENV PHPLDAPADMIN_LDAP_HOSTS="ldap.kibadex.net"
