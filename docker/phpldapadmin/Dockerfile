@@ -1,4 +1,4 @@
-FROM osixia/phpldapadmin:4.9.1
+FROM osixia/phpldapadmin:0.9.0
 
 ENV PHPLDAPADMIN_LDAP_HOSTS="ldap.kibadex.net"
 ENV PHPLDAPADMIN_SERVER_ADMIN="mohamed.basri@outlook.com"
