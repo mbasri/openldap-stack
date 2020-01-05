@@ -1,11 +1,14 @@
 # sensorgraph/openldap
 
-![Docker Pulls](https://img.shields.io/docker/pulls/sensorgraph/openldap.svg)
-![Image size](https://images.microbadger.com/badges/image/sensorgraph/openldap.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/mbasri/openldap-stack.svg)
+![Image size](https://images.microbadger.com/badges/image/mbasri/openldap-stack.svg)
 
 **A docker image to run OpenLDAP.**
 
-> * Docker base image: [https://github.com/osixia/docker-openldap](https://github.com/osixia/docker-openldap)
+> * Docker base image:
+>   * [https://github.com/osixia/docker-openldap](https://github.com/osixia/docker-openldap)
+>   * [https://github.com/osixia/docker-phpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
+>   * [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
 > * OpenLDAP website: [www.openldap.org](http://www.openldap.org/)
 
 ## Prerequisites
@@ -16,14 +19,16 @@
 ## Usage
 
 ```bash
-git clone https://github.com/sensorgraph/openldap.git ~/openldap
-cd ~/openldap
+git clone https://github.com/mbasri/openldap-stack.git ~/openldap
+cd ~/openldap-stack
 ./build
 ```
 
-> Make sure that the `build` file can be executed via '`chmod +x ~/openldap/build`'
+> Make sure that the `build` file can be executed via '`chmod +x ~/openldap-stack/build`'
 
 ### Volumes
+
+#### OpenLDAP
 
 * Persistent data :
   * /etc/ldap/sldap.d
@@ -31,10 +36,30 @@ cd ~/openldap
 * Transport Layer Security
   * /container/service/slapd/assets/certs
 
+#### PHPLDAPAdmin
+
+* Transport Layer Security
+  * /container/service/phpldapadmin/assets/apache2/certs
+
+#### OpenLDAP Backup
+
+* TODO
+
 ### Ports
+
+#### OpenLDAP
 
 * LDAP: 389
 * LDAPS: 636
+
+#### PHPLDAPAdmin
+
+* HTTP: 80
+* HTTPS: 443
+
+#### OpenLDAP Backup
+
+* TODO
 
 ### Create the entries on the LDAP
 

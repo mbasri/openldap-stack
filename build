@@ -1,20 +1,24 @@
 #!/bin/sh
 
-VER=${1:-latest}
-
-REPO="sensorgraph/openldap:${VER}"
+VERSION=${1:-latest}
 
 docker login --username=mbasri
-if [ "$?"  -eq 0 ]; then
-  docker build -t $REPO .
-  docker push $REPO
-  if [ "$?"  -eq 0 ]; then
-    VER="latest"
-    REPO_LATEST="sensorgraph/openldap:${VER}"
-    docker tag $REPO $REPO_LATEST
-    docker push $REPO_LATEST
+REPOSITORY="mbasri/openldap:${VERRSION}"
+
+cd docker
+for i in "openldap" "phpldapadmin" "openldap-backup"
+do
+  if [ "$?" -eq 0 ]; then
+    docker build -t ${REPOSITORY} ${i}
+    docker push ${REPOSITORY}
+    if [ "$?" -eq 0 ]; then
+      VERSION="latest"
+      REPOSITORY_LATEST="mbasri/openldap:${VERSION}"
+      docker tag ${REPOSITORY} ${REPOSITORY_LATEST}
+      docker push ${REPOSITORY_LATEST}
+    fi
+  else
+    echo -n "Login failed, exiting"
+    exit 1
   fi
-else
-  echo -n "Login failed, exiting"
-  exit 1
-fi
+done

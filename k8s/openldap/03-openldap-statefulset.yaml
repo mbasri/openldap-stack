@@ -62,6 +62,8 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: openldap
+      labels:
+        app: openldap
     spec:
       storageClassName: aws-ebs-gp2
       accessModes:

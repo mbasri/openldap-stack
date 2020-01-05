@@ -1,6 +1,6 @@
 # Use sensorgraph/openldap
 # sources: https://github.com/sensorgraph/openldap
-FROM osixia/openldap:1.2.4
+FROM osixia/openldap:1.3.0
 
 ENV HOSTNAME="ldap.kibadex.net"
 ENV LDAP_ORGANISATION="Kibadex"
