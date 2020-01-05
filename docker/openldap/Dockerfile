@@ -1,5 +1,5 @@
-# Use sensorgraph/openldap
-# sources: https://github.com/sensorgraph/openldap
+# Use mbasri/openldap
+# sources: https://github.com/mbasri/openldap
 FROM osixia/openldap-backup:1.3.0
 
 ENV HOSTNAME="ldap.kibadex.net"

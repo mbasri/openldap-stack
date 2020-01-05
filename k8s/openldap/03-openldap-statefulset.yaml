@@ -47,6 +47,24 @@ spec:
             configMapKeyRef:
               name: openldap
               key: ldap_readonly_user
+        
+        - name: LDAP_BACKUP_CONFIG_CRON_EXP
+          valueFrom:
+            configMapKeyRef:
+              name: openldap
+              key: ldap_backup_config_cron_exp
+
+        - name: LDAP_BACKUP_DATA_CRON_EXP
+          valueFrom:
+            configMapKeyRef:
+              name: openldap
+              key: ldap_backup_data_cron_exp
+
+        - name: LDAP_BACKUP_TTL
+          valueFrom:
+            configMapKeyRef:
+              name: openldap
+              key: ldap_backup_ttl
 
         - name: LDAP_ADMIN_PASSWORD
           valueFrom:
@@ -60,23 +78,6 @@ spec:
               name: openldap
               key: ldap_readonly_password
 
-        - name: LDAP_BACKUP_CONFIG_CRON_EXP
-          valueFrom:
-            secretKeyRef:
-              name: openldap
-              key: ldap_backup_config_cron_exp
-
-        - name: LDAP_BACKUP_DATA_CRON_EXP
-          valueFrom:
-            secretKeyRef:
-              name: openldap
-              key: ldap_backup_data_cron_exp
-              
-        - name: LDAP_BACKUP_TTL
-          valueFrom:
-            secretKeyRef:
-              name: openldap
-              key: ldap_backup_ttl
   volumeClaimTemplates:
   - metadata:
       name: openldap
