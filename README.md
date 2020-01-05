@@ -1,7 +1,7 @@
 # sensorgraph/openldap
 
-![Docker Pulls](https://img.shields.io/docker/pulls/mbasri/openldap-stack.svg)
-![Image size](https://images.microbadger.com/badges/image/mbasri/openldap-stack.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/mbasri/openldap.svg)
+![Image size](https://images.microbadger.com/badges/image/mbasri/openldap.svg)
 
 **A docker images to run OpenLDAP Stack.**
 
