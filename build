@@ -8,6 +8,7 @@ REPOSITORY="mbasri/openldap:${VERRSION}"
 cd docker
 for i in "openldap" "phpldapadmin" "openldap-backup"
 do
+  REPOSITORY="mbasri/${i}:${VERRSION}"
   if [ "$?" -eq 0 ]; then
     docker build -t ${REPOSITORY} ${i}
     docker push ${REPOSITORY}
