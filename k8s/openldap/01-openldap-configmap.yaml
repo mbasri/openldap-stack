@@ -11,6 +11,6 @@ data:
   ldap_tls_ca_crt_filename: kibadex.net.crt
   ldap_tls_crt_filename: ldap.kibadex.net.crt
   ldap_tls_key_filename: ldap.kibadex.net.key
-  ldap_backup_config_cron_exp: 0/1 * * * *
-  ldap_backup_data_cron_exp: 0/1 * * * *
+  ldap_backup_config_cron_exp: "*/10 * * * *"
+  ldap_backup_data_cron_exp: "*/10 * * * *"
   ldap_backup_ttl: "30"

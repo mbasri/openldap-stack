@@ -1,4 +1,4 @@
-# sensorgraph/openldap
+# mbasri/openldap
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/mbasri/openldap.svg)
 ![Image size](https://images.microbadger.com/badges/image/mbasri/openldap.svg)
