@@ -12,7 +12,7 @@ do
     docker push ${REPOSITORY}
     if [ "$?" -eq 0 ]; then
       VERSION="latest"
-      REPOSITORY_LATEST="mbasri/openldap:${VERSION}"
+      REPOSITORY_LATEST="mbasri/${i}:${VERSION}"
       docker tag ${REPOSITORY} ${REPOSITORY_LATEST}
       docker push ${REPOSITORY_LATEST}
     fi
