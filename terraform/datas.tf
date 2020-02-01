@@ -11,6 +11,18 @@ data "terraform_remote_state" "main" {
 data "aws_caller_identity" "current" {}
 
 # KMS keys
-data "aws_kms_alias" "main" {
+data "aws_kms_alias" "secretsmanager" {
   name = "alias/aws/secretsmanager"
+}
+
+data "aws_kms_alias" "backup" {
+  name = "alias/aws/backup"
+}
+
+data "aws_iam_policy" "backup" {
+  arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+}
+
+data "aws_iam_policy" "restore" {
+  arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
 }
