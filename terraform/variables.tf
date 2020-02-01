@@ -28,5 +28,5 @@ variable "name" {
 }
 
 locals {
-  secret_name = "/cicn/ldap/${join("-",[var.name["Organisation"], var.name["OrganisationUnit"], var.name["Application"], var.name["Environment"], "pri"])}"
+  secret_name = "/cicd/ldap/${join("-",[var.name["Organisation"], var.name["OrganisationUnit"], var.name["Application"], var.name["Environment"], "pri"])}"
 }

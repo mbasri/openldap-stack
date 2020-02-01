@@ -1,3 +1,4 @@
+# http://localhost:8001/api/v1/namespaces/default/services/https:phpldapadmin:443/proxy/
 apiVersion: v1
 kind: Service
 metadata:
