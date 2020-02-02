@@ -1,6 +1,7 @@
 # Use mbasri/openldap
 # sources: https://github.com/mbasri/openldap
 FROM osixia/openldap-backup:1.3.0
+LABEL MAINTAINER="Mohamed BASRI <mbasri@outlook.fr>"
 
 ENV HOSTNAME="ldap.kibadex.net"
 ENV LDAP_ORGANISATION="Kibadex"

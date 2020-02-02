@@ -1,0 +1,32 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: openldap-backup
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: openldap-backup
+            image: mbasri/openldap-backup-to-s3:latest
+            command:
+            - /bin/bash
+            - -c
+            - /backup-to-s3.sh
+            env:
+            - name: BUCKET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: openldap
+                  key: backup_bucket_name
+            volumeMounts:
+            - name: openldap-backup
+              mountPath: /backup
+              subPath: data/backup
+          restartPolicy: OnFailure
+          volumes:
+          - name: openldap-backup
+            persistentVolumeClaim:
+              claimName: openldap

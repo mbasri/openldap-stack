@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: phpldapadmin
-        image: sensorgraph/phpldapadmin
+        image: sensorgraph/phpldapadmin:latest
         env:
         - name: PHPLDAPADMIN_LDAP_HOSTS
           value: openldap

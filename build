@@ -4,7 +4,7 @@ VERSION=${1:-latest}
 docker login --username=mbasri
 cd docker
 
-for i in "openldap" "phpldapadmin"
+for i in "openldap" "phpldapadmin" "openldap-backup-to-s3"
 do
   REPOSITORY="mbasri/${i}:${VERSION}"
   if [ "$?" -eq 0 ]; then

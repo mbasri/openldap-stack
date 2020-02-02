@@ -14,3 +14,4 @@ data:
   ldap_backup_config_cron_exp: "*/10 * * * *"
   ldap_backup_data_cron_exp: "*/10 * * * *"
   ldap_backup_ttl: "30"
+  backup_bucket_name: "kbd-lab-cic-prd-pri"
