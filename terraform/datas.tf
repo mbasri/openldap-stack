@@ -19,6 +19,10 @@ data "aws_kms_alias" "backup" {
   name = "alias/aws/backup"
 }
 
+data "aws_kms_alias" "s3" {
+  name = "alias/aws/s3"
+}
+
 data "aws_iam_policy" "backup" {
   arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
 }

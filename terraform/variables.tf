@@ -41,4 +41,5 @@ locals {
   backup_plan_name      = "${join("-", [var.name["Organisation"], var.name["OrganisationUnit"], var.name["Application"], var.name["Environment"], "pri"])}"
   backup_selection_name = "${join("-", [var.name["Organisation"], var.name["OrganisationUnit"], var.name["Application"], var.name["Environment"], "pri"])}"
   iam_role_backup_name  = "${join("-", [var.name["Organisation"], var.name["OrganisationUnit"], var.name["Application"], var.name["Environment"], "pri"])}"
+  backup_bucket_name    = "${join("-", [var.name["Organisation"], var.name["OrganisationUnit"], var.name["Application"], var.name["Environment"], "pri"])}"
 }
