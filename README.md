@@ -5,14 +5,23 @@
 
 **A docker images to run OpenLDAP Stack.**
 
-> * Docker base images:
->   * OpenLDAP: [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
->   * PHPLDAPAdmin: [https://github.com/osixia/docker-phpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
-> * OpenLDAP website: [www.openldap.org](http://www.openldap.org/)
+The stack is based on 3 applications, all applications are containerized:
+
+* **Open LDAP**
+  * *Description:* The LDAP server
+  * *Docker base image:* [https://github.com/osixia/docker-openldap-backup](https://github.com/osixia/docker-openldap-backup)
+
+* **PHP LDAP Admin**
+  * *Description:* The web UI to manage the LDAP
+  * *Docker base image:* [https://github.com/osixia/docker-phpLDAPadmin](https://github.com/osixia/docker-phpLDAPadmin)
+
+* **Open LDAP Backup**
+  * *Description:* A docker image used to send the backup to S3
+  * *Docker base image:* [https://github.com/sekka1/aws-cli-docker](https://github.com/sekka1/aws-cli-docker)
 
 ## Prerequisites
 
-* [docker](https://www.google.com/search?q=how+to+install+docker)
+About the containerization,you need to install [docker](https://www.google.com/search?q=how+to+install+docker)
 * [ansible](https://www.google.com/search?q=how+to+install+ansible)
 
 ## Usage
